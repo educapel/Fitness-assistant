@@ -249,7 +249,20 @@ docker-compose up
 
 App will be available at `http://localhost:8000`.
 
+if you need to change any file, make the changes an re run
+the following commands:
+
+
+```bash
+docker-compose build
+
+docker-compose up
+```
+
 ### Running Locally
+
+If you don't run it with docker you will have to set up all the libraries that can be found in requirements.txt
+
 
 1. Start only postgres and grafana:
    ```bash
@@ -280,13 +293,19 @@ For debugging, you may run the app in Docker directly.
 2. Run it:
    ```bash
    docker run -it --rm \
-        --network="fitness-assistant_default" \
+        --network="Fitness-assistant" \
         --env-file=".env" \
         -e OPENROUTER_API_KEY=${OPENROUTER_API_KEY} \
         -e DATA_PATH="data/data.csv" \
         -p 8000:8000 \
         fitness-assistant
    ```
+
+
+#### Preparing the app
+
+before we run the app we need to initialise the DB by runnin 'db_prep.py'
+
 
 ### Time Configuration
 
@@ -303,6 +322,7 @@ Inserted time (UTC): 2025-09-17 23:43:12.170246+00:00
 Inserted time (Europe/London): 2025-09-18 00:43:12.170246+01:00
 Selected time (UTC): 2025-09-17 23:43:12.170246+00:00
 Selected time (Europe/London): 2025-09-18 00:43:12.170246+01:00
+
 ```
 
 Set timezone in `.env` with:
